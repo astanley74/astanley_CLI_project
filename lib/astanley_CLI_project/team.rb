@@ -1,0 +1,2 @@
+class AstanleyCLIProject::Team
+end
