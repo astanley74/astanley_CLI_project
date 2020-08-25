@@ -21,13 +21,13 @@ class AstanleyCLIProject::Team
         end
     end
 
-    def self.get_team
+    def self.make_team
         AstanleyCLIProject::API.get_team
     end
 
     def self.all
         if @@all.empty?
-            get_team
+            make_team
         end
         @@all
     end
