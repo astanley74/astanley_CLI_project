@@ -4,16 +4,31 @@ require 'rest-client'
 require 'dotenv/load'
 require 'pry'
 class AstanleyCLIProject::Team
-    attr_accessor :market, :name, :wins, :losses
+    attr_accessor :id, :name, :market, :sr_id, :reference, :games_played, :wins, :losses, :overtime_losses, :win_pct, :points, :shootout_wins, :shootout_losses, :goals_for, :goals_against, :goal_diff, :powerplays, :powerplay_goals, :powerplay_pct, :powerplays_against, :powerplay_goals_against, :penalty_killing_pct, :points_pct, :points_per_game, :regulation_wins, :streak, :records, :rank, :calc_rank
     @@all = []
 
-    def initialize(teams_hash)
-        teams_hash.each do |key, value|
-            send("#{key}", value)
+    def initialize(team)
+        team.each do |k, v|
+            send("#{k}=", v)
+        end
+        save
+        # binding.pry
+    end
+
+    def self.new_team(teams)
+        teams.each do |team|
+            AstanleyCLIProject::Team.new(team)
         end
     end
 
+    def self.get_team
+        AstanleyCLIProject::API.get_team
+    end
+
     def self.all
+        if @@all.empty?
+            get_team
+        end
         @@all
     end
 
