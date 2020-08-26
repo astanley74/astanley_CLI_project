@@ -13,6 +13,7 @@ class AstanleyCLIProject::Team
             send("#{key}=", value)
         end
         save
+        sort_by_wins
         # binding.pry
     end
 
@@ -30,11 +31,16 @@ class AstanleyCLIProject::Team
         if @@all.empty?
             make_team
         end
-        @@all.sort {|team1, team2| team1.rank["conference"] <=> team2.rank["conference"]}
         @@all
+    end
+
+    def sort_by_wins
+        @@all.sort! { |team1, team2| team2.wins <=> team1.wins}
     end
 
     def save
         @@all << self
     end
+
+
 end

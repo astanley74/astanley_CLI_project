@@ -11,8 +11,13 @@ class AstanleyCLIProject::API
         all_teams = []
         pacific_teams = json["conferences"][0]["divisions"][0]["teams"]
         central_teams = json["conferences"][0]["divisions"][1]["teams"]
+        atlantic_teams = json["conferences"][1]["divisions"][0]["teams"]
+        metro_teams = json["conferences"][1]["divisions"][1]["teams"]
+
         pacific_teams.each {|team| all_teams << team}
         central_teams.each {|team| all_teams << team}
+        atlantic_teams.each {|team| all_teams << team}
+        metro_teams.each {|team| all_teams << team}
         # all_teams = json["conferences"][0]["divisions"][0]["teams"]
         # binding.pry
         AstanleyCLIProject::Team.new_team_hash(all_teams)

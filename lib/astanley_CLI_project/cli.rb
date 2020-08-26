@@ -15,7 +15,7 @@ class AstanleyCLIProject::Cli
 
     def greeting
         puts ""
-        puts "Hello West Coast hockey fan! Would you like to see a list of teams from the Western Conference? (yes/no)"
+        puts "Hello hockey fan! Would you like to see a list of teams from the NHL? (yes/no)"
     end
 
     def choices
@@ -26,12 +26,12 @@ class AstanleyCLIProject::Cli
         puts ""
         puts "Green = playoff team.".green + " Red = non-playoff team.".red
         sleep(2.5)
-        AstanleyCLIProject::Team.all.each do |team| 
+        AstanleyCLIProject::Team.all.each_with_index do |team, i| 
             puts "--------------------"
             if team.rank["clinched"]
-                puts "#{team.rank["conference"]}. #{team.market} #{team.name}".green
+                puts "#{i+1}. #{team.market} #{team.name}".green
             else
-                puts "#{team.rank["conference"]}. #{team.market} #{team.name}".red
+                puts "#{i+1}. #{team.market} #{team.name}".red
             end
             # binding.pry
         end
