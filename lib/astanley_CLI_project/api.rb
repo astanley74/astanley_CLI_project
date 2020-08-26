@@ -9,7 +9,7 @@ class AstanleyCLIProject::API
         json = JSON.parse(call_1)
 
         teams = json["conferences"][0]["divisions"][0]["teams"]
-        AstanleyCLIProject::Team.new_team(teams)
+        AstanleyCLIProject::Team.new_team_hash(teams)
         # binding.pry
     end
 end

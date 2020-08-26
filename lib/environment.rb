@@ -2,6 +2,7 @@ require 'pry'
 require 'rest-client'
 require 'json'
 require 'dotenv/load'
+require 'colorize'
 
 require_relative "astanley_CLI_project/version.rb"
 require_relative "astanley_CLI_project/cli.rb"
