@@ -16,8 +16,8 @@ class AstanleyCLIProject::Team
         # binding.pry
     end
 
-    def self.new_team_hash(teams)
-        teams.each do |team|
+    def self.new_team_hash(all_teams)
+        all_teams.each do |team|
             AstanleyCLIProject::Team.new(team)
         end
     end
@@ -30,6 +30,7 @@ class AstanleyCLIProject::Team
         if @@all.empty?
             make_team
         end
+        @@all.sort {|team1, team2| team1.rank["conference"] <=> team2.rank["conference"]}
         @@all
     end
 
