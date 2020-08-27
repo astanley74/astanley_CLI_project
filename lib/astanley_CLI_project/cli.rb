@@ -7,10 +7,11 @@ class AstanleyCLIProject::Cli
             list_teams
         end
         choose_team
-        team_statistics
-        until @input == "exit"
-            team_statistics
-        end
+        stat_options
+        choose_stat
+        puts ""
+        goodbye
+        # choose category of statistics to display for given team.
     end
 
     def greeting
@@ -18,14 +19,10 @@ class AstanleyCLIProject::Cli
         puts "Hello hockey fan! Would you like to see a list of teams from the NHL? (yes/no)"
     end
 
-    def choices
-        puts "To view a team's statistics, please select a team."
-    end
-
     def list_teams #should list all of the teams in the Pacific Division in order of record. 
         puts ""
         puts "Green = playoff team.".green + " Red = non-playoff team.".red
-        sleep(2.5)
+        sleep(2)
         AstanleyCLIProject::Team.all.each_with_index do |team, i| 
             puts "--------------------"
             if team.rank["clinched"]
@@ -45,25 +42,85 @@ class AstanleyCLIProject::Cli
         user_input
     end
     
-    def team_statistics #should be able to list all of the statistics of the team that the user inputs in the terminal
+    def stat_options #should be able to list all of the statistics of the team that the user inputs in the terminal
         AstanleyCLIProject::Team.all.each do |team|
             otl = team.overtime_losses + team.shootout_losses
             if @input.include?(team.market) || @input.include?(team.market.downcase)|| @input.include?(team.name) || @input.include?(team.name.downcase)
                 puts ""
-                puts "#{team.market} #{team.name}"
-                puts "===================="
-                puts "DIVISION RANK: #{team.rank["division"]}"
-                puts "GAMES PLAYED: #{team.games_played}"
-                puts "RECORD:" + " #{team.wins} W".green + " - " + "#{team.losses} L".red + " - " + "#{otl} OTL".red
-                puts "WIN PCT: #{team.win_pct}"
-                puts "POWERPLAY: #{team.powerplay_pct}%"
-                puts "PENALTY KILL: #{team.penalty_killing_pct}%"
+                puts "        #{team.market} #{team.name}        ".green
+                puts "---------------------------------"
+                puts "To view team record, type record."
+                puts "To view offensive statistics, type offense."
+                puts "To view defensive statistics, type defense."
+                puts "To view special teams statistics, type special teams."
+                puts "To select another team, type next."
+                puts "To exit, type exit."
+                puts ""
+                puts "Please select a statistic to view, or choose another team"
             end
             # binding.pry
         end
-        puts ""
-        puts "To view another team's statistics, please select another team. Else, type exit."
-        user_input
+    end
+
+    def choose_stat
+        AstanleyCLIProject::Team.all.each do |team|
+            otl = team.overtime_losses + team.shootout_losses
+            # puts ""
+            # puts "Please select a statistic to view."
+            user_input
+            puts ""
+            if @input == "record"
+                puts ""
+                puts "     RECORD    ".green
+                puts "==============="
+                puts "GAMES PLAYED:" + " #{team.games_played}".green
+                puts "RECORD:" + " #{team.wins} W".green + " - " + "#{team.losses} L".red + " - " + "#{otl} OTL".red
+                puts "WIN PCT:" + " #{team.win_pct}".green
+                puts ""
+                puts "Please choose another statistic or team to view."
+            elsif @input == "offense"
+                puts ""
+                puts "    OFFENSE    ".blue
+                puts "==============="
+                puts "GOALS FOR:" + " #{team.goals_for}".blue
+                puts "POINTS:" + " #{team.points}".blue
+                puts "POINTS %:" + " #{team.points_pct}".blue
+                puts "PPG:" + " #{team.points_per_game}".blue
+                puts ""
+                puts "Please choose another statistic or team to view."
+            elsif @input == "defense"
+                puts ""
+                puts "    DEFENSE    ".red
+                puts "==============="
+                puts "GOALS AGAINST:" + " #{team.goals_against}".red
+                puts "GOAL DIFF:" + " #{team.goal_diff}".red
+                puts ""
+                puts "Please choose another statistic or team to view."
+            elsif @input == "special teams"
+                puts ""
+                puts " SPECIAL TEAMS   ".yellow
+                puts "==============="
+                puts "PP %:" + " #{team.powerplay_pct}".yellow
+                puts "POWERPLAYS:" + " #{team.powerplays}".yellow
+                puts "PK %:" + " #{team.penalty_killing_pct}".yellow
+                puts "PENALTY KILLS:" + " #{team.powerplays_against}".yellow
+                puts ""
+                puts "Please choose another statistic or team to view."
+            elsif @input == "next"
+                choose_team
+                stat_options
+                choose_stat
+            elsif @input == "exit"
+                goodbye
+                exit
+            end
+            # elsif @input == "exit"
+            #     goodbye
+        end
+    end
+
+    def goodbye
+        puts "Thank you, hockey fan!"
     end
 
     def user_input
