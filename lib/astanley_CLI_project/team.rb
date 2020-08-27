@@ -41,6 +41,4 @@ class AstanleyCLIProject::Team
     def save
         @@all << self
     end
-
-
 end
