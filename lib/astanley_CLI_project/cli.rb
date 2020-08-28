@@ -15,7 +15,7 @@ class AstanleyCLIProject::Cli
 
     def greeting
         puts ""
-        puts "Hello hockey fan! Would you like to see a list of teams from the NHL? (yes/no)".yellow
+        puts "Hello hockey fan! Would you like to see a list of teams from the NHL? (yes/no)".cyan
     end
 
     def list_teams #should list all of the teams in the Pacific Division in order of record. 
@@ -40,6 +40,10 @@ class AstanleyCLIProject::Cli
         puts "To view a team's statistics, please select a team."
         puts ""
         user_input
+        if @input == "exit"
+            goodbye
+            exit
+        end
     end
     
     def team_stats #should be able to list all of the statistics of the team that the user inputs in the terminal
@@ -47,7 +51,7 @@ class AstanleyCLIProject::Cli
             otl = team.overtime_losses + team.shootout_losses
             if @input.include?(team.market) || @input.include?(team.market.downcase)|| @input.include?(team.name) || @input.include?(team.name.downcase)
                 puts ""
-                puts "        #{team.market} #{team.name}        ".green
+                puts "        #{team.market} #{team.name}        ".cyan
                 # puts "#{team.wins} #{team.losses}"
                 # binding.pry
                 puts "---------------------------------"
@@ -120,7 +124,7 @@ class AstanleyCLIProject::Cli
 
     def goodbye
         puts ""
-        puts "Thank you, hockey fan!".yellow
+        puts "Thank you, hockey fan!".cyan
         puts ""
     end
 
