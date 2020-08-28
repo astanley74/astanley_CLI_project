@@ -20,7 +20,7 @@ class AstanleyCLIProject::Cli
 
     def list_teams #should list all of the teams in the Pacific Division in order of record. 
         puts ""
-        puts "Green = playoff team.".green + " Red = non-playoff team.".red
+        puts "Green = playoff team.".green.underline + " Red = non-playoff team.".red.underline
         sleep(1.5)
         AstanleyCLIProject::Team.all.each_with_index do |team, i| 
             puts "--------------------"

@@ -24,7 +24,7 @@ Or install it yourself as:
 
     $ ruby bin/nhl_cli
 
-2) Follow the on screen prompts to continue using the program. 
+2) Follow the on screen prompts to continue using the ruby gem. 
 
 
 ## Development
