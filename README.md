@@ -1,8 +1,6 @@
 # AstanleyCLIProject
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/astanley_CLI_project`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Ruby Gem uses a CLI to give a user access to all of the teams that are in the National Hockey League (NHL). The user can select a team, and will be given a list of statistical categories to choose from. Once a category is chosen, the statistics will be displayed and the user can enter another statistic, team, or exit. 
 
 ## Installation
 
@@ -22,7 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1) To begin, run the executable file with the following commmand: 
+
+    $ ruby bin/nhl_cli
+
+2) Follow the on screen prompts to continue using the program. 
+
 
 ## Development
 

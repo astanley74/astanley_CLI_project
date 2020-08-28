@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["astanley74"]
   spec.email         = ["stanley.377@buckeyemail.osu.edu"]
 
-  spec.summary       = %q{This CLI application will return the NHL teams that are in both the Eastern and Western Conference. It will also allow a user to select a team from a conference and the roster will be displayed.}
+  spec.summary       = %q{This CLI application will return a list of all NHL teams. The user will then be able to select a team and view different statistics of that team.}
   spec.homepage      = "https://github.com/astanley74/astanley_CLI_project.git"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
