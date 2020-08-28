@@ -1,8 +1,3 @@
-require_relative './version.rb'
-require 'json'
-require 'rest-client'
-require 'dotenv/load'
-require 'pry'
 class AstanleyCLIProject::API
     # binding.pry
     def self.get_team
@@ -18,9 +13,7 @@ class AstanleyCLIProject::API
         central.each {|team| all_teams << team}
         atlantic.each {|team| all_teams << team}
         metro.each {|team| all_teams << team}
-        # all_teams = json["conferences"][0]["divisions"][0]["teams"]
         # binding.pry
         AstanleyCLIProject::Team.new_team_hash(all_teams)
     end
 end
-# AstanleyCLIProject::API.get_team

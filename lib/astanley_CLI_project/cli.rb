@@ -1,4 +1,3 @@
-require_relative "./version.rb"
 class AstanleyCLIProject::Cli
     def start
         greeting
@@ -16,9 +15,10 @@ class AstanleyCLIProject::Cli
     def greeting
         puts ""
         puts "Hello hockey fan! Would you like to see a list of teams from the NHL? (yes/no)".cyan
+        puts ""
     end
 
-    def list_teams #should list all of the teams in the Pacific Division in order of record. 
+    def list_teams #should list all of the teams in the NHL in order of record. 
         puts ""
         puts "Green = playoff team.".green.underline + " Red = non-playoff team.".red.underline
         sleep(1.5)
@@ -32,12 +32,11 @@ class AstanleyCLIProject::Cli
             # binding.pry
         end
         puts "----------------------"
-        puts ""
     end
 
     def choose_team
         puts ""
-        puts "To view a team's statistics, please select a team."
+        puts "To view a team's statistics, please select a team.".underline
         puts ""
         user_input
         if @input == "exit"
@@ -46,14 +45,12 @@ class AstanleyCLIProject::Cli
         end
     end
     
-    def team_stats #should be able to list all of the statistics of the team that the user inputs in the terminal
+    def team_stats #should display the team name that the user has chosen and give them a list of options they can use to display data about the team. 
         AstanleyCLIProject::Team.all.each do |team|
             otl = team.overtime_losses + team.shootout_losses
             if @input.include?(team.market.downcase) || @input.include?(team.name.downcase)
                 puts ""
                 puts "        #{team.market} #{team.name}        ".cyan
-                # puts "#{team.wins} #{team.losses}"
-                # binding.pry
                 puts "---------------------------------"
                 puts "To view team record, type record.".yellow
                 puts "To view offensive statistics, type offense.".yellow
@@ -110,6 +107,7 @@ class AstanleyCLIProject::Cli
                         puts "PENALTY KILLS:" + " #{team.powerplays_against}".yellow
                         puts ""
                         puts "Please choose another statistic or type next to view another team.".underline
+                        puts ""
                         user_input
                     when "next"
                         choose_team
@@ -122,7 +120,6 @@ class AstanleyCLIProject::Cli
             elsif @input == "exit"
                 exit
             end
-            # binding.pry
             # binding.pry
         end
     end
