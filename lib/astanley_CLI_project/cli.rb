@@ -1,8 +1,7 @@
 class AstanleyCLIProject::Cli
     def start
         greeting
-        user_input
-        if @input == "yes" && @input != "no"
+        if @input == "yes"
             list_teams
         else
             goodbye
@@ -16,6 +15,7 @@ class AstanleyCLIProject::Cli
         puts ""
         puts "Hello hockey fan! Would you like to see a list of teams from the NHL? (yes/no)".cyan
         puts ""
+        user_input
     end
 
     def list_teams #should list all of the teams in the NHL in order of record. 

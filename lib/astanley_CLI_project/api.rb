@@ -3,6 +3,7 @@ class AstanleyCLIProject::API
     def self.get_team
         call = RestClient.get("https://api.sportradar.us/nhl/trial/v7/en/seasons/2019/REG/standings.json?api_key=#{ENV['NHL_API_KEY']}")
         json = JSON.parse(call)
+        
         all_teams = []
         pacific = json["conferences"][0]["divisions"][0]["teams"]
         central = json["conferences"][0]["divisions"][1]["teams"]
