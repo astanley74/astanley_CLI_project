@@ -75,7 +75,7 @@ class AstanleyCLIProject::Cli
                         puts "Please choose another statistic or type next to view another team.".underline
                         puts ""
                         user_input
-                    when "offense"
+                    when "offense", "o"
                         puts ""
                         puts "    OFFENSE    ".blue
                         puts "==============="
@@ -118,6 +118,7 @@ class AstanleyCLIProject::Cli
                     end
                 end
             elsif @input == "exit"
+                goodbye
                 exit
             end
             # binding.pry

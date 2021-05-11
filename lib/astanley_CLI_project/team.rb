@@ -11,6 +11,8 @@ class AstanleyCLIProject::Team
         # binding.pry
     end
 
+    # generate list of users favorite teams
+
     def self.new_team_hash(all_teams)
         all_teams.each do |team|
             AstanleyCLIProject::Team.new(team)

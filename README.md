@@ -26,6 +26,9 @@ Or install it yourself as:
 
 2) Follow the on screen prompts to continue using the ruby gem. 
 
+## Demo
+    [Application Walkthrough](https://www.youtube.com/watch?v=TBBSKqpyLSE&t=18s)
+
 
 ## Development
 
