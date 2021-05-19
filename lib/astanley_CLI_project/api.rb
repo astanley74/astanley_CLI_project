@@ -5,15 +5,15 @@ class AstanleyCLIProject::API
         json = JSON.parse(call)
         
         all_teams = []
-        pacific = json["conferences"][0]["divisions"][0]["teams"]
-        central = json["conferences"][0]["divisions"][1]["teams"]
-        atlantic = json["conferences"][1]["divisions"][0]["teams"]
-        metro = json["conferences"][1]["divisions"][1]["teams"]
+        north = json["conferences"][0]["divisions"][0]["teams"]
+        cent = json["conferences"][0]["divisions"][1]["teams"]
+        east = json["conferences"][0]["divisions"][2]["teams"]
+        west = json["conferences"][0]["divisions"][3]["teams"]
 
-        pacific.each {|team| all_teams << team}
-        central.each {|team| all_teams << team}
-        atlantic.each {|team| all_teams << team}
-        metro.each {|team| all_teams << team}
+        north.each {|team| all_teams << team}
+        cent.each {|team| all_teams << team}
+        east.each {|team| all_teams << team}
+        west.each {|team| all_teams << team}
         # binding.pry
         AstanleyCLIProject::Team.new_team_hash(all_teams)
     end
