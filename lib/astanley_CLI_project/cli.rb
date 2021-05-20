@@ -24,7 +24,7 @@ class AstanleyCLIProject::Cli
         sleep(1.5)
         AstanleyCLIProject::Team.all.each_with_index do |team, i| 
             puts "--------------------"
-            if team.rank["clinched"]
+            if team.rank["division"] <= 4
                 puts "#{i+1}. #{team.market} #{team.name}".green
             else
                 puts "#{i+1}. #{team.market} #{team.name}".red
